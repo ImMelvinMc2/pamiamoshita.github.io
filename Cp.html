@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feliz Cumpleaños, Mi Amor</title>
+
+
+
+  <!-- Pétalos de rosa animados -->
+<style>
+.petal {
+  position: fixed;
+  top: -50px;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 1001;
+  opacity: 0.85;
+  animation: caerPetalo 7s linear forwards;
+}
+@keyframes caerPetalo {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+</style>
+<script>
+const petalImg = "petalo.png"; // Usar tu imagen local
+
+function crearPetalo() {
+  const petal = document.createElement("img");
+  petal.src = petalImg;
+  petal.className = "petal";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = (6 + Math.random() * 3) + "s";
+  petal.style.transform = `rotate(${Math.random()*360}deg)`;
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 9000);
+}
+
+// Genera pétalos cada cierto tiempo
+setInterval(crearPetalo, 400);
+</script>
+
+  <div class="peluche-con-frase">
+  <span class="frase">¡Hola amor, soy Dudu! 🧸💕</span>
+  <img src="Dudu.webp" class="peluche" />
+</div>
+
+<style>
+.peluche-con-frase {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-align: center;
+  z-index: 99;
+}
+
+.frase {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: pink;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 8px;
+  border-radius: 12px;
+  animation: fraseBrilla 2s infinite;
+}
+
+.peluche {
+  height: 100px;
+  animation: saltito 1.5s infinite;
+}
+
+@keyframes saltito {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fraseBrilla {
+  0%, 100% { color: #ffb6c1; }
+  50% { color: #fff0f5; }
+}
+</style>
+
+  
+  <style>
+    .starry-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.5); }
+    }
+
+    #chat-romantico {
+      position: fixed;
+      bottom: 30px;
+      left: 20px;
+      z-index: 10;
+      font-size: 1em;
+      max-width: 300px;
+    }
+
+    .burbuja {
+      background: rgba(255, 182, 193, 0.8);
+      color: black;
+      padding: 10px 15px;
+      border-radius: 20px;
+      margin-top: 10px;
+      animation: aparecer 0.5s ease;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    :root {
+      --bg-gradient: linear-gradient(to top right, #ffdde1, #f99fc9);
+      --text-color: #fff;
+      --shadow-color: #ff69b4;
+      --btn-bg: #ff69b4;
+      --btn-bg-hover: #ff85c1;
+      --btn-text-color: white;
+      --btn-shadow: rgba(0,0,0,0.2);
+      --toggle-bg: #ff69b4;
+      --toggle-text-color: white;
+    }
+
+    .dark {
+      --bg-gradient: linear-gradient(to top right, #3a0e31, #6a1956);
+      --text-color: #ffd6e8;
+      --shadow-color: #b55483;
+      --btn-bg: #b55483;
+      --btn-bg-hover: #d77fb2;
+      --btn-text-color: #fff0f6;
+      --btn-shadow: rgba(0,0,0,0.5);
+      --toggle-bg: #b55483;
+      --toggle-text-color: #fff0f6;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-gradient);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      color: var(--text-color);
+      overflow-x: hidden;
+      overflow-y: auto;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    h1 {
+      margin-top: 50px;
+      font-size: 3em;
+      text-shadow: 2px 2px 4px var(--shadow-color);
+    }
+
+    p {
+      font-size: 1.5em;
+      margin: 20px 10%;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background: var(--btn-bg);
+      border: none;
+      color: var(--btn-text-color);
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px var(--btn-shadow);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: var(--btn-bg-hover);
+    }
+
+    .volume-control {
+      margin-top: 20px;
+    }
+
+    input[type="range"] {
+      width: 200px;
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: url('https://i.imgur.com/hV2Sl6Z.png');
+      background-size: cover;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    #toggle-theme {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: var(--toggle-bg);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      color: var(--toggle-text-color);
+      cursor: pointer;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+  </style>
+<style>
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 20px;
+  border: 8px solid #ff00de;
+  box-shadow:
+    0 0 20px 5px #ff00de,
+    0 0 40px 10px #00fff7,
+    0 0 60px 20px #ff00de,
+    0 0 80px 30px #00fff7;
+  animation: neonBorde 2s infinite alternate;
+}
+
+@keyframes neonBorde {
+  0% {
+    box-shadow:
+      0 0 20px 5px #ff00de,
+      0 0 40px 10px #00fff7,
+      0 0 60px 20px #ff00de,
+      0 0 80px 30px #00fff7;
+    border-color: #ff00de;
+  }
+  100% {
+    box-shadow:
+      0 0 40px 10px #00fff7,
+      0 0 60px 20px #ff00de,
+      0 0 80px 30px #00fff7,
+      0 0 100px 40px #ff00de;
+    border-color: #00fff7;
+  }
+}
+</style>
+
+</script>
+</head>
+<body class="tema-1">
+
+<div style="text-align:center; margin:30px 0;">
+  <div id="reloj" style="font-size:2em; color:#e75480; font-weight:bold;"></div>
+  <div id="saludo" style="font-size:1.2em; color:#ff69b4; margin-top:10px;"></div>
+</div>
+<script>
+function actualizarReloj() {
+  const ahora = new Date();
+  let h = ahora.getHours();
+  let m = ahora.getMinutes();
+  let s = ahora.getSeconds();
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
+  document.getElementById('reloj').textContent = `${h}:${m}:${s}`;
+  let saludo = "";
+  if (ahora.getHours() < 12) saludo = "¡Buenos días, mi amor! ☀️";
+  else if (ahora.getHours() < 19) saludo = "¡Buenas tardes, preciosa! 🌸";
+  else saludo = "¡Buenas noches, princesa! 🌙";
+  document.getElementById('saludo').textContent = saludo;
+}
+setInterval(actualizarReloj, 1000);
+actualizarReloj();
+</script>
+
+<!-- ...código existente... -->
+<div style="text-align:center; margin:30px 0;">
+  <div id="reloj" class="brilla" style="font-size:2em; color:#e75480; font-weight:bold;"></div>
+  <div id="saludo" class="brilla" style="font-size:1.2em; color:#ff69b4; margin-top:10px;"></div>
+</div>
+<!-- ...código existente... -->
+
+<style>
+/* ...código existente... */
+.brilla {
+  text-shadow: 0 0 5px pink, 0 0 15px deeppink, 0 0 25px hotpink;
+  animation: brillar 2s infinite alternate;
+}
+@keyframes brillar {
+  from { text-shadow: 0 0 5px pink; }
+  to { text-shadow: 0 0 20px deeppink, 0 0 40px hotpink; }
+}
+</style>
+
+  
+
+  <!-- Bloqueo total de la página -->
+<div id="bloqueo" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#523737; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+  <h2>🔒 Ingresa la contraseña</h2>
+  <input type="password" id="clave" placeholder="Contraseña" style="font-size:1.2em; padding:6px 12px; border-radius:8px; border:1px solid #ccc;">
+  <button onclick="verificarContraseña()" style="margin-top:10px; font-size:1em; padding:4px 12px; border-radius:8px;">Entrar</button>
+  <div id="mensaje-error" style="color:red; margin-top:8px;"></div>
+</div>
+
+<script>
+function verificarContraseña() {
+  const claveCorrecta = "nangona";
+  const claveIngresada = document.getElementById('clave').value;
+  if (claveIngresada === claveCorrecta) {
+    document.getElementById('bloqueo').style.display = 'none';
+  } else {
+    document.getElementById('mensaje-error').textContent = "Contraseña incorrecta 😢";
+  }
+}
+</script>
+
+<script>
+// Desactiva clic derecho
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Desactiva teclas F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+C
+document.addEventListener('keydown', function(e) {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "C" || e.key === "J")) ||
+    (e.ctrlKey && e.key === "U")
+  ) {
+    e.preventDefault();
+    return false;
+  }
+});
+</script>
+
+<div id="bienvenida" class="bienvenida-animada">
+  ¡Bienvenida, mi amor! 💖
+</div>
+
+<style>
+.bienvenida-animada {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,182,193,0.95); /* Fondo rosado semitransparente */
+  font-size: 2.5em;
+  color: #fff;
+  z-index: 3000;
+  animation: zoomIn 1.2s forwards;
+  opacity: 1;
+  transition: opacity 0.8s;
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.bienvenida-animada.ocultar {
+  opacity: 0;
+  pointer-events: none;
+}
+</style>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.getElementById('bienvenida').classList.add('ocultar');
+    setTimeout(() => {
+      document.getElementById('bienvenida').style.display = 'none';
+    }, 800); // Espera a que termine la transición de opacidad
+  }, 2000); // Tiempo visible antes de desaparecer (2 segundos)
+});
+</script>
+
+  <!-- Canvas para los fuegos artificiales -->
+<canvas id="fuegosCanvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:1999; display:none; opacity:0; transition: opacity 0.8s;"></canvas>
+
+<script>
+function lanzarFuegos() {
+  const canvas = document.getElementById('fuegosCanvas');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canvas.style.display = 'block';
+  canvas.style.opacity = '1';
+  const ctx = canvas.getContext('2d');
+  let fuegos = [];
+
+  function crearFuego() {
+    const colores = ['#ff69b4', '#ffd700', '#00e6ff', '#ff6347', '#adff2f', '#fff'];
+    const x = Math.random() * canvas.width;
+    const y = canvas.height * (0.3 + Math.random() * 0.4);
+    const color = colores[Math.floor(Math.random() * colores.length)];
+    let particulas = [];
+    for (let i = 0; i < 40; i++) {
+      const angulo = (Math.PI * 2 * i) / 40;
+      const velocidad = 2 + Math.random() * 2;
+      particulas.push({
+        x, y,
+        vx: Math.cos(angulo) * velocidad,
+        vy: Math.sin(angulo) * velocidad,
+        alpha: 1,
+        color
+      });
+    }
+    fuegos.push(particulas);
+  }
+
+  let animando = true;
+  let lanzados = 0;
+  function animar() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    fuegos.forEach((particulas, idx) => {
+      particulas.forEach(p => {
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.03; // gravedad
+        // Desvanecimiento más suave al final
+        if (p.alpha < 0.3) {
+          p.alpha -= 0.015;
+        } else {
+          p.alpha -= 0.03;
+        }
+      });
+      fuegos[idx] = particulas.filter(p => p.alpha > 0);
+    });
+    fuegos = fuegos.filter(f => f.length > 0);
+    if (animando) requestAnimationFrame(animar);
+    if (fuegos.length === 0 && lanzados >= 3) {
+      canvas.style.opacity = '0';
+      setTimeout(() => {
+        canvas.style.display = 'none';
+      }, 800); // Espera a que termine la transición
+      animando = false;
+    }
+  }
+
+  // Lanza varios fuegos artificiales
+  lanzados = 0;
+  animando = true;
+  function lanzarMultiples() {
+    if (lanzados < 3) {
+      crearFuego();
+      lanzados++;
+      setTimeout(lanzarMultiples, 700 + Math.random() * 200);
+    }
+  }
+  lanzarMultiples();
+  animar();
+}
+
+// Lanza fuegos artificiales automáticamente cada 10 segundos
+setInterval(lanzarFuegos, 10000);
+// Opcional: lanza uno al cargar la página
+window.addEventListener('DOMContentLoaded', lanzarFuegos);
+</script>
+  <script>
+    const temas = ['tema-1', 'tema-2', 'tema-3', 'tema-4','tema-6','tema-7','tema-8','tema-9','tema-10', 'tema-2', 'tema-5', 'tema-3', 'tema-9'];
+    let indice = 0;
+
+    setInterval(() => {
+      document.body.className = temas[indice];
+      indice = (indice + 1) % temas.length;
+    }, 1500); // cambia cada 2 segundos
+  </script>
+<style>
+  .clave-section {
+    background: linear-gradient(135deg, #ffe0f0, #ffeef8);
+    border: 2px solid #ff66a3;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    animation: aparecer 1s ease-in-out;
+  }
+
+  .clave-section h2 {
+    color: #d63384;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  #claveInput {
+    padding: 10px;
+    border: 1px solid #d63384;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .clave-section button {
+    background-color: #ff66a3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .clave-section button:hover {
+    background-color: #e05592;
+  }
+
+  #secreto {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #d63384;
+    display: none;
+    animation: aparecer 1s ease-in-out;
+  }
+
+  @keyframes aparecer {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  
+</style>
+
+<h2 class="nombre-novia">💖 J O C E L Y N  💖</h2>
+
+<style>
+.nombre-novia {
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  color: #fff;
+  text-shadow: 0 0 5px pink, 0 0 15px deeppink, 0 0 25px hotpink;
+  animation: brillar 2s infinite alternate;
+  margin-top: 30px;
+}
+@keyframes brillar {
+  from { text-shadow: 0 0 5px pink; }
+  to { text-shadow: 0 0 20px deeppink, 0 0 40px hotpink; }
+}
+</style>
+
+
+<div class="clave-section">
+  <h2>🔐 Solo tú puedes leer esto...</h2>
+  <input type="text" id="claveInput" placeholder="Escribe la clave aquí">
+  <br>
+  <button onclick="verificarClave()">Desbloquear</button>
+  <div id="secreto">
+    ✨ Mi amor, si estás leyendo esto es porque sabes lo especial que eres para mí... 💖
+  </div>
+</div>
+
+<script>
+  function verificarClave() {
+    const clave = document.getElementById('claveInput').value.toLowerCase();
+    const secreto = document.getElementById('secreto');
+    if (clave === 'tochina') {
+      secreto.style.display = 'block';
+    } else {
+      alert('Nu nu esho nu jeje una pistita? "Eres y shiempre lo seras my love jijiji" ');
+    }
+  }
+</script>
+
+
+
+<body>
+  
+  
+   <div class="volume-control">
+    <label for="volumen">🔊 Volumen:</label>
+    <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
+  </div>
+
+  <div class="hearts" id="hearts-container"></div>
+
+  <audio id="musica" src="unforgttable.mp3" preload="auto" loop></audio>
+
+  <script>
+    // Permitir reproducir música al primer clic
+    document.addEventListener('click', function reproducirMusica() {
+      const musica = document.getElementById('musica');
+      if (musica.paused) {
+        musica.play().catch(e => console.log("Error al reproducir música:", e));
+      }
+      document.removeEventListener('click', reproducirMusica);
+    });
+
+    // Controlar el volumen con el input
+    const volumenInput = document.getElementById('volumen');
+    const musica = document.getElementById('musica');
+    volumenInput.addEventListener('input', function() {
+      musica.volume = this.value;
+    });
+  </script>
+  <div class="starry-bg" id="starry"></div>
+  <div id="chat-romantico"></div>
+
+  <button id="toggle-theme" aria-label="Cambiar tema">🌙</button>
+
+<select id="tema-romantico" style="font-size:12px; padding:4px 8px; border-radius:8px; position:fixed; left:15px; top:15px; z-index:1001;">
+  <option value="">🌈 Tema1</option>
+  <option value="Tema2">Tema2</option>
+  <option value="Tema3">Tema3</option>
+  <option value="Tema4">Tema4</option>
+</select>
+
+  <h1>🎉 ¡Feliz Cumpleaños, Mi Amor! 🎂</h1>
+  <p id="mensaje"></p>
+
+  <button class="btn" onclick="mostrarPoema()">💌 Poema secreto</button>
+  <div id="poema" style="margin-top: 20px;"></div>
+
+  <div class="volume-control">
+    <label for="volumen">🔊 Volumen:</label>
+    <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
+  </div>
+
+  <div class="hearts" id="hearts-container"></div>
+
+  <audio id="musica" src="unforgttable.mp3" preload="auto" loop></audio>
+
+  <script>
+    document.addEventListener('click', function reproducirMusica() {
+      const musica = document.getElementById('musica');
+      if (musica.paused) {
+        musica.play().catch(e => console.log("Error al reproducir música:", e));
+      }
+      document.removeEventListener('click', reproducirMusica);
+    });
+
+    function mostrarPoema() {
+      const poema = document.getElementById("poema");
+      poema.innerHTML = `"En cada latido encuentro tu nombre,<br>
+        en cada suspiro, tu abrazo.<br>
+        No hay día que pase sin pensarte,<br>
+        porque tú eres mi mayor regalo." 💖`;
+      poema.style.display = "block";
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('toggle-theme');
+      const body = document.body;
+      const music = document.getElementById("musica");
+      const slider = document.getElementById("volumen");
+      const container = document.getElementById("hearts-container");
+
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          body.classList.add('dark');
+          toggleBtn.textContent = '☀️';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          body.classList.remove('dark');
+          toggleBtn.textContent = '🌙';
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      setTheme(savedTheme);
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      slider.addEventListener("input", () => {
+        music.volume = slider.value;
+      });
+
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+        container.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+      }, 300);
+
+      // Crear estrellas
+      const starry = document.getElementById('starry');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        starry.appendChild(star);
+      }
+
+      // Máquina de escribir
+      const mensaje = `Hoy celebramos el día en que nació la persona más hermosa del mundo. Gracias por ser mi alegría, mi paz y mi todo. Te amo con todo mi corazón 💖. Espero que este día esté lleno de sonrisas, abrazos, dulces y mucho amor.`;
+      const p = document.getElementById('mensaje');
+      let i = 0;
+      function maquinaEscribir() {
+        if (i < mensaje.length) {
+          p.textContent += mensaje.charAt(i);
+          i++;
+          setTimeout(maquinaEscribir, 50);
+        }
+      }
+      p.textContent = '';
+      maquinaEscribir();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectorTemas = document.getElementById('tema-romantico');
+      const body = document.body;
+
+      function aplicarTema(tema) {
+        const esModoOscuro = body.classList.contains('dark');
+
+        let gradienteClaro = '';
+        let gradienteOscuro = '';
+
+        switch (tema) {
+          case 'Tema2':
+            gradienteClaro = 'linear-gradient(to top right, #ffafbd, #ffc3a0)';
+            gradienteOscuro = 'linear-gradient(to top right, #5e2d49, #a1476b)';
+            break;
+          case 'Tema3':
+            gradienteClaro = 'linear-gradient(to top right, #89f7fe, #66a6ff)';
+            gradienteOscuro = 'linear-gradient(to top right, #1e3c72, #2a5298)';
+            break;
+          case 'Tema4':
+            gradienteClaro = 'linear-gradient(to top right, #d1913c, #ffd194)';
+            gradienteOscuro = 'linear-gradient(to top right, #5a3b1a, #a47135)';
+            break;
+          default:
+            gradienteClaro = 'linear-gradient(to top right, #ffdde1, #f99fc9)';
+            gradienteOscuro = 'linear-gradient(to top right, #3a0e31, #6a1956)';
+        }
+
+        const nuevoFondo = esModoOscuro ? gradienteOscuro : gradienteClaro;
+        body.style.setProperty('--bg-gradient', nuevoFondo);
+      }
+
+      selectorTemas.addEventListener('change', () => {
+        aplicarTema(selectorTemas.value);
+        localStorage.setItem('tema-romantico', selectorTemas.value);
+      });
+
+      const temaGuardado = localStorage.getItem('tema-romantico') || '';
+      if (temaGuardado) {
+        selectorTemas.value = temaGuardado;
+        aplicarTema(temaGuardado);
+      }
+
+      const toggleBtn = document.getElementById('toggle-theme');
+      toggleBtn.addEventListener('click', () => {
+        const tema = selectorTemas.value;
+        setTimeout(() => aplicarTema(tema), 100);
+      });
+    });
+  </script>
+  <script>
+  function verificarClave() {
+    const clave = document.getElementById('claveInput').value.toLowerCase();
+    const secreto = document.getElementById('secreto');
+    if (clave === 'tochina') {
+      secreto.style.display = 'block';
+    } else {
+      alert('Clave incorrecta. Intenta de nuevo 🥺');
+    }
+  }
+</script>
+
+</body>
+</html>
