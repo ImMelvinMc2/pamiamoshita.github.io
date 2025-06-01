@@ -4,6 +4,144 @@
   <meta charset="UTF-8" />
   <title>Feliz Cumpleaños, Mi Amor</title>
 
+<div style="text-align:center; font-size:1.2em; color:#e75480; letter-spacing:2px; margin-top:20px;">
+  PA MI AMOSHITA<br>
+   TRAVIESILAAAA
+</div>
+<h2 class="nombre-novia">💖 J O C E L Y N  💖</h2>
+<style>
+.nombre-novia {
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  color: #fff;
+  text-shadow: 0 0 5px pink, 0 0 15px deeppink, 0 0 25px hotpink;
+  animation: brillar 2s infinite alternate;
+  margin-top: 30px;
+}
+@keyframes brillar {
+  from { text-shadow: 0 0 5px pink; }
+  to { text-shadow: 0 0 20px deeppink, 0 0 40px hotpink; }
+}
+</style>
+
+<div style="text-align:center; margin:30px 0;">
+  <div id="reloj" style="font-size:2em; color:#e75480; font-weight:bold;"></div>
+  <div id="saludo" style="font-size:1.2em; color:#ff69b4; margin-top:10px;"></div>
+</div>
+<script>
+function actualizarReloj() {
+  const ahora = new Date();
+  let h = ahora.getHours();
+  let m = ahora.getMinutes();
+  let s = ahora.getSeconds();
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
+  document.getElementById('reloj').textContent = `${h}:${m}:${s}`;
+  let saludo = "";
+  if (ahora.getHours() < 12) saludo = "¡Wenooosh díaaaash, mi amoshita! ☀️";
+  else if (ahora.getHours() < 19) saludo = "¡Wenaaash tardes, prechocha! 🌸";
+  else saludo = "¡Wenaaaash noshes, princesitaa! 🌙";
+  document.getElementById('saludo').textContent = saludo;
+}
+setInterval(actualizarReloj, 1000);
+actualizarReloj();
+</script>
+
+
+<style>
+.neon-borde {
+  border: 6px solid #ff00de;
+  border-radius: 20px;
+  box-shadow:
+    0 0 20px 5px #ff00de,
+    0 0 40px 10px #00fff7,
+    0 0 60px 20px #ff00de,
+    0 0 80px 30px #00fff7;
+  animation: neonBorde 2s infinite alternate;
+  padding: 20px;
+  margin: 30px;
+}
+@keyframes neonBorde {
+  0% {
+    box-shadow:
+      0 0 20px 5px #ff00de,
+      0 0 40px 10px #00fff7,
+      0 0 60px 20px #ff00de,
+      0 0 80px 30px #00fff7;
+    border-color: #ff00de;
+  }
+  100% {
+    box-shadow:
+      0 0 40px 10px #00fff7,
+      0 0 60px 20px #ff00de,
+      0 0 80px 30px #00fff7,
+      0 0 100px 40px #ff00de;
+    border-color: #00fff7;
+  }
+}
+</style>
+<div class="neon-borde">
+  <h2 style="margin:0;">¡Eres la luz de mi vida! 💡💖</h2>
+</div>
+
+
+
+<div style="text-align:center; margin:30px 0;">
+  <svg width="120" height="120" viewBox="0 0 120 120">
+    <ellipse cx="60" cy="90" rx="40" ry="15" fill="#ffe4e1"/>
+    <rect x="20" y="50" width="80" height="40" rx="20" fill="#ffb6c1"/>
+    <rect x="50" y="30" width="20" height="20" rx="10" fill="#fffacd"/>
+    <rect x="57" y="15" width="6" height="20" rx="3" fill="#ffe066"/>
+    <circle cx="60" cy="15" r="5" fill="#ffecb3"/>
+  </svg>
+  <div style="color:#e75480; margin-top:10px;">¡Sopla la velita y pide un deseo! 🎂</div>
+</div>
+
+<button onclick="mostrarCarta()" style="font-size:1em; padding:6px 14px; border-radius:8px; margin:20px auto; display:block;">💌 Leer mi carta para ti</button>
+<div id="carta-cumple" style="display:none; max-width:400px; margin:20px auto; background:#fff0f6; border-radius:14px; padding:18px; color:#e75480; font-size:1.1em; box-shadow:0 2px 12px #ffb6c1; min-height:120px;"></div>
+<script>
+const textoCarta = `Oaaaaaa mi amoshitaaaa!!!. 💖✨
+Hoy es un día muy especial porque celebramos tu cumpleañoos my love. Gracias por cada sonrisa, cada cosa q haces y cada momento juntos. Eres mi alegría y mi vidaaaaa. Espero q este día te loo pases de lo mejor mi amoshitaaa, disfrutalooo al maxiamoooo mi niña y no olvidees lo mushooo mushoteeeee q ti amooooo mi traviesillaaa💖. ¡Feliz cumpleaños, mi niña pechochaaaa!.`;
+
+function mostrarCarta() {
+  const carta = document.getElementById('carta-cumple');
+  carta.style.display = 'block';
+  carta.innerHTML = '';
+  let i = 0;
+  function escribir() {
+    if (i < textoCarta.length) {
+      carta.innerHTML += textoCarta.charAt(i);
+      i++;
+      setTimeout(escribir, 25);
+    }
+  }
+  escribir();
+}
+</script>
+
+  <script>
+function crearEmoji() {
+  const emoji = document.createElement('div');
+  emoji.textContent = ['💖','✨','😍','🌹','🥰'][Math.floor(Math.random()*5)];
+  emoji.style.position = 'fixed';
+  emoji.style.left = Math.random() * 100 + 'vw';
+  emoji.style.top = '-40px';
+  emoji.style.fontSize = (24 + Math.random()*24) + 'px';
+  emoji.style.opacity = 0.8;
+  emoji.style.pointerEvents = 'none';
+  emoji.style.transition = 'top 3s linear';
+  document.body.appendChild(emoji);
+  setTimeout(() => {
+    emoji.style.top = '100vh';
+  }, 10);
+  setTimeout(() => {
+    emoji.remove();
+  }, 3100);
+}
+setInterval(crearEmoji, 600);
+</script>
 
 
   <!-- Pétalos de rosa animados -->
@@ -294,29 +432,6 @@ body::before {
 </head>
 <body class="tema-1">
 
-<div style="text-align:center; margin:30px 0;">
-  <div id="reloj" style="font-size:2em; color:#e75480; font-weight:bold;"></div>
-  <div id="saludo" style="font-size:1.2em; color:#ff69b4; margin-top:10px;"></div>
-</div>
-<script>
-function actualizarReloj() {
-  const ahora = new Date();
-  let h = ahora.getHours();
-  let m = ahora.getMinutes();
-  let s = ahora.getSeconds();
-  h = h < 10 ? "0" + h : h;
-  m = m < 10 ? "0" + m : m;
-  s = s < 10 ? "0" + s : s;
-  document.getElementById('reloj').textContent = `${h}:${m}:${s}`;
-  let saludo = "";
-  if (ahora.getHours() < 12) saludo = "¡Buenos días, mi amor! ☀️";
-  else if (ahora.getHours() < 19) saludo = "¡Buenas tardes, preciosa! 🌸";
-  else saludo = "¡Buenas noches, princesa! 🌙";
-  document.getElementById('saludo').textContent = saludo;
-}
-setInterval(actualizarReloj, 1000);
-actualizarReloj();
-</script>
 
 <!-- ...código existente... -->
 <div style="text-align:center; margin:30px 0;">
@@ -582,32 +697,17 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   
 </style>
 
-<h2 class="nombre-novia">💖 J O C E L Y N  💖</h2>
 
-<style>
-.nombre-novia {
-  text-align: center;
-  font-size: 2.5rem;
-  letter-spacing: 10px;
-  color: #fff;
-  text-shadow: 0 0 5px pink, 0 0 15px deeppink, 0 0 25px hotpink;
-  animation: brillar 2s infinite alternate;
-  margin-top: 30px;
-}
-@keyframes brillar {
-  from { text-shadow: 0 0 5px pink; }
-  to { text-shadow: 0 0 20px deeppink, 0 0 40px hotpink; }
-}
-</style>
+
 
 
 <div class="clave-section">
-  <h2>🔐 Solo tú puedes leer esto...</h2>
+  <h2>🔐 Solo tú puedes leer esto... una pita... comienza con "t" y termina con "a" y alguien se baña muy tarde tambien....</h2>
   <input type="text" id="claveInput" placeholder="Escribe la clave aquí">
   <br>
   <button onclick="verificarClave()">Desbloquear</button>
   <div id="secreto">
-    ✨ Mi amor, si estás leyendo esto es porque sabes lo especial que eres para mí... 💖
+    ✨ Mi amor, shi tas leyendo eto eh poque sabes q eres una tochinita jeje y lo especial que eres para mí, mi bebitaaa pechochaaaa nu se baña Yyyyyyyy nangonaaaa sha tiene 20 añitoooosh mi mamiiiii Yyyyyyyyy... 💖
   </div>
 </div>
 
@@ -623,6 +723,69 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   }
 </script>
 
+<div style="text-align:center; margin:30px 0;">
+  <h3 style="color:#e75480;">🌳 Nuestro árbol de deseos</h3>
+  <div id="arbol-contenedor" style="display:inline-block; position:relative; width:320px; height:400px;">
+    <!-- Tronco -->
+    <div style="position:absolute; left:140px; top:250px; width:40px; height:120px; background:#8d5524; border-radius:20px;"></div>
+    <!-- Copa del árbol (círculo verde) -->
+    <div style="position:absolute; left:40px; top:40px; width:240px; height:240px; background:#4caf50; border-radius:120px;"></div>
+    <!-- Hojas/deseos -->
+    <div id="hojas-arbol" style="position:absolute; left:40px; top:40px; width:240px; height:240px;"></div>
+  </div>
+  <div style="margin-top:20px;">
+    <input id="deseo-input" type="text" placeholder="Escribe tu deseo..." style="padding:6px 14px; border-radius:8px;">
+    <button onclick="agregarDeseoArbol()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
+  </div>
+</div>
+<script>
+function mostrarDeseosArbol() {
+  const hojas = document.getElementById('hojas-arbol');
+  hojas.innerHTML = '';
+  const deseos = JSON.parse(localStorage.getItem('deseosArbol') || '[]');
+  // Distribuir las hojas en círculo
+  const radio = 100;
+  const centroX = 120, centroY = 120;
+  deseos.forEach((texto, i) => {
+    const angulo = (2 * Math.PI * i) / deseos.length - Math.PI/2;
+    const x = centroX + radio * Math.cos(angulo);
+    const y = centroY + radio * Math.sin(angulo);
+    const hoja = document.createElement('span');
+    hoja.style.position = 'absolute';
+    hoja.style.left = x + 'px';
+    hoja.style.top = y + 'px';
+    hoja.style.fontSize = '1em';
+    hoja.style.background = '#e0ffe0';
+    hoja.style.borderRadius = '12px';
+    hoja.style.padding = '2px 8px';
+    hoja.style.whiteSpace = 'nowrap';
+    hoja.style.boxShadow = '0 2px 8px #b2dfdb';
+    hoja.innerHTML = `🍃 ${texto} <button onclick="eliminarDeseoArbol(${i})" style="background:none; border:none; color:#e75480; font-size:1em; cursor:pointer;">❌</button>`;
+    hojas.appendChild(hoja);
+  });
+}
+
+function agregarDeseoArbol() {
+  const input = document.getElementById('deseo-input');
+  const texto = input.value.trim();
+  if(texto) {
+    const deseos = JSON.parse(localStorage.getItem('deseosArbol') || '[]');
+    deseos.push(texto);
+    localStorage.setItem('deseosArbol', JSON.stringify(deseos));
+    input.value = '';
+    mostrarDeseosArbol();
+  }
+}
+
+function eliminarDeseoArbol(indice) {
+  const deseos = JSON.parse(localStorage.getItem('deseosArbol') || '[]');
+  deseos.splice(indice, 1);
+  localStorage.setItem('deseosArbol', JSON.stringify(deseos));
+  mostrarDeseosArbol();
+}
+
+mostrarDeseosArbol();
+</script>
 
 
 <body>
@@ -669,9 +832,17 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   <h1>🎉 ¡Feliz Cumpleaños, Mi Amor! 🎂</h1>
   <p id="mensaje"></p>
 
-  <button class="btn" onclick="mostrarPoema()">💌 Poema secreto</button>
-  <div id="poema" style="margin-top: 20px;"></div>
+<button class="btn" onclick="mostrarPoema()">Ti amooooo mi amoshitaaaa 💌  </button>
+<div id="poema" style="margin-top: 20px;"></div>
 
+<script>
+function mostrarPoema() {
+  const poema = document.getElementById("poema");
+  poema.innerHTML = `Feliiiiiiz cumpleaaaaaños my loveeeeee<br><br>
+    <img src="Duduglobo.webp" alt="Globo" style="width:120px; border-radius:12px; box-shadow:0 2px 8px #ffb6c1;">`;
+  poema.style.display = "block";
+}
+</script>
   <div class="volume-control">
     <label for="volumen">🔊 Volumen:</label>
     <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
@@ -680,6 +851,47 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   <div class="hearts" id="hearts-container"></div>
 
   <audio id="musica" src="unforgttable.mp3" preload="auto" loop></audio>
+
+<div style="text-align:center; margin:30px 0;">
+  <h3 style="color:#e75480;">🔗 Enlaces q quieras agg jeje...</h3>
+  <input id="nuevo-enlace" type="text" placeholder="Pega aquí el enlace..." style="padding:6px 14px; border-radius:8px; width:220px;">
+  <button onclick="agregarEnlace()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
+  <ul id="lista-enlaces" style="margin-top:15px; color:#388e3c; font-size:1.1em; list-style: none; padding:0;"></ul>
+</div>
+<script>
+function mostrarEnlaces() {
+  const lista = document.getElementById('lista-enlaces');
+  lista.innerHTML = '';
+  const enlaces = JSON.parse(localStorage.getItem('misEnlaces') || '[]');
+  enlaces.forEach((url, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${url}" target="_blank" style="color:#e75480; text-decoration:underline;">${url}</a>
+      <button onclick="eliminarEnlace(${i})" style="background:none; border:none; color:#e75480; font-size:1em; cursor:pointer;">❌</button>`;
+    lista.appendChild(li);
+  });
+}
+
+function agregarEnlace() {
+  const input = document.getElementById('nuevo-enlace');
+  const url = input.value.trim();
+  if(url) {
+    const enlaces = JSON.parse(localStorage.getItem('misEnlaces') || '[]');
+    enlaces.push(url);
+    localStorage.setItem('misEnlaces', JSON.stringify(enlaces));
+    input.value = '';
+    mostrarEnlaces();
+  }
+}
+
+function eliminarEnlace(indice) {
+  const enlaces = JSON.parse(localStorage.getItem('misEnlaces') || '[]');
+  enlaces.splice(indice, 1);
+  localStorage.setItem('misEnlaces', JSON.stringify(enlaces));
+  mostrarEnlaces();
+}
+
+mostrarEnlaces();
+</script>
 
   <script>
     document.addEventListener('click', function reproducirMusica() {
@@ -690,14 +902,6 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
       document.removeEventListener('click', reproducirMusica);
     });
 
-    function mostrarPoema() {
-      const poema = document.getElementById("poema");
-      poema.innerHTML = `"En cada latido encuentro tu nombre,<br>
-        en cada suspiro, tu abrazo.<br>
-        No hay día que pase sin pensarte,<br>
-        porque tú eres mi mayor regalo." 💖`;
-      poema.style.display = "block";
-    }
 
     document.addEventListener('DOMContentLoaded', () => {
       const toggleBtn = document.getElementById('toggle-theme');
@@ -750,7 +954,7 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
       }
 
       // Máquina de escribir
-      const mensaje = `Hoy celebramos el día en que nació la persona más hermosa del mundo. Gracias por ser mi alegría, mi paz y mi todo. Te amo con todo mi corazón 💖. Espero que este día esté lleno de sonrisas, abrazos, dulces y mucho amor.`;
+      const mensaje = `Jeje hoy nacioo una niñaaa chimoshaaaa, traviesillaaaa, enojonaaa y dramaticaaa jijiji, grashiaaaas por todoo toditoooo lo q me has hecohoo pasar mi niña hemoshitaaaa y como dije ashaa arribaaa q disfruteeees este diaaaa al maximo mi amooor paselaaa supeeeer bieeen Yyyyyyyy y te amiitoooo mushoteeeesiiimoooo my loveee😘💕.`;
       const p = document.getElementById('mensaje');
       let i = 0;
       function maquinaEscribir() {
