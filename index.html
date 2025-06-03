@@ -723,103 +723,12 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   }
 </script>
 
-<!-- Scripts de Firebase (pon esto antes de tu script) -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-
-<script>
-// Pega aquí tu configuración de Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyAtVIbWjHnJuTvadfwJ1Jn1dvkxgG5PXjQ",
-  authDomain: "arbol-deseos.firebaseapp.com",
-  databaseURL: "https://arbol-deseos-default-rtdb.firebaseio.com",
-  projectId: "arbol-deseos",
-  storageBucket: "arbol-deseos.firebasestorage.app",
-  messagingSenderId: "44183198760",
-  appId: "1:44183198760:web:f7fadcc56955950406691d",
-  measurementId: "G-70FZ2BF8M8"
-};
-
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-
-function mostrarDeseosArbol() {
-  const hojas = document.getElementById('hojas-arbol');
-  db.ref('deseos').on('value', snapshot => {
-    hojas.innerHTML = '';
-    const deseos = snapshot.val() ? Object.entries(snapshot.val()) : [];
-    const radio = 100;
-    const centroX = 120, centroY = 120;
-    deseos.forEach(([key, texto], i) => {
-      const angulo = (2 * Math.PI * i) / deseos.length - Math.PI/2;
-      const x = centroX + radio * Math.cos(angulo);
-      const y = centroY + radio * Math.sin(angulo);
-      const hoja = document.createElement('span');
-      hoja.style.position = 'absolute';
-      hoja.style.left = x + 'px';
-      hoja.style.top = y + 'px';
-      hoja.style.fontSize = '1em';
-      hoja.style.background = '#e0ffe0';
-      hoja.style.borderRadius = '12px';
-      hoja.style.padding = '2px 8px';
-      hoja.style.whiteSpace = 'nowrap';
-      hoja.style.boxShadow = '0 2px 8px #b2dfdb';
-      hoja.innerHTML = `🍃 ${texto} <button onclick="eliminarDeseoArbol('${key}')" style="background:none; border:none; color:#e75480; font-size:1em; cursor:pointer;">❌</button>`;
-      hojas.appendChild(hoja);
-    });
-  });
-}
-
-function agregarDeseoArbol() {
-  const input = document.getElementById('deseo-input');
-  const texto = input.value.trim();
-  if(texto) {
-    db.ref('deseos').push(texto);
-    input.value = '';
-  }
-}
-
-function eliminarDeseoArbol(key) {
-  db.ref('deseos/' + key).remove();
-}
-
-mostrarDeseosArbol();
-</script>
-<div style="text-align:center; margin:30px 0;">
-  <h3 style="color:#e75480;">🌳 Nuestro árbol de deseos (global)</h3>
-  <div id="arbol-contenedor" style="display:inline-block; position:relative; width:320px; height:400px;">
-    <!-- Tronco -->
-    <div style="position:absolute; left:140px; top:250px; width:40px; height:120px; background:#8d5524; border-radius:20px;"></div>
-    <!-- Copa del árbol (círculo verde) -->
-    <div style="position:absolute; left:40px; top:40px; width:240px; height:240px; background:#4caf50; border-radius:120px;"></div>
-    <!-- Hojas/deseos -->
-    <div id="hojas-arbol" style="position:absolute; left:40px; top:40px; width:240px; height:240px;"></div>
-  </div>
-  <div style="margin-top:20px;">
-    <input id="deseo-input" type="text" placeholder="Escribe tu deseo..." style="padding:6px 14px; border-radius:8px;">
-    <button onclick="agregarDeseoArbol()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
-  </div>
-</div>
 
 
 
 <body>
   
-  <div style="text-align:center; margin:30px 0;">
-  <h3 style="color:#e75480;">🌳 Nuestro árbol de deseos (global)</h3>
-  <div id="arbol-contenedor" style="display:inline-block; position:relative; width:320px; height:400px;">
-    <!-- Tronco -->
-    <div style="position:absolute; left:140px; top:250px; width:40px; height:120px; background:#8d5524; border-radius:20px;"></div>
-    <!-- Copa del árbol (círculo verde) -->
-    <div style="position:absolute; left:40px; top:40px; width:240px; height:240px; background:#4caf50; border-radius:120px;"></div>
-    <!-- Hojas/deseos -->
-    <div id="hojas-arbol" style="position:absolute; left:40px; top:40px; width:240px; height:240px;"></div>
-  </div>
-  <div style="margin-top:20px;">
-    <input id="deseo-input" type="text" placeholder="Escribe tu deseo..." style="padding:6px 14px; border-radius:8px;">
-    <button onclick="agregarDeseoArbol()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
-  </div>
-</div>
+
   
    <div class="volume-control">
     <label for="volumen">🔊 Volumen:</label>
@@ -864,6 +773,86 @@ mostrarDeseosArbol();
 
 <button class="btn" onclick="mostrarPoema()">Ti amooooo mi amoshitaaaa 💌  </button>
 <div id="poema" style="margin-top: 20px;"></div>
+
+<div style="text-align:center; margin:30px 0;">
+  <h3 style="color:#e75480;">🌳 Nuestro árbol de deseos (global)</h3>
+  <div id="arbol-contenedor" style="display:inline-block; position:relative; width:320px; height:400px;">
+    <!-- Tronco -->
+    <div style="position:absolute; left:140px; top:250px; width:40px; height:120px; background:#8d5524; border-radius:20px;"></div>
+    <!-- Copa del árbol (círculo verde) -->
+    <div style="position:absolute; left:40px; top:40px; width:240px; height:240px; background:#4caf50; border-radius:120px;"></div>
+    <!-- Hojas/deseos -->
+    <div id="hojas-arbol" style="position:absolute; left:40px; top:40px; width:240px; height:240px;"></div>
+  </div>
+  <div style="margin-top:20px;">
+    <input id="deseo-input" type="text" placeholder="Escribe tu deseo..." style="padding:6px 14px; border-radius:8px;">
+    <button onclick="agregarDeseoArbol()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
+  </div>
+</div>
+
+<!-- Scripts de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAtVIbWjHnJuTvadfwJ1Jn1dvkxgG5PXjQ",
+  authDomain: "arbol-deseos.firebaseapp.com",
+  databaseURL: "https://arbol-deseos-default-rtdb.firebaseio.com",
+  projectId: "arbol-deseos",
+  storageBucket: "arbol-deseos.firebasestorage.app",
+  messagingSenderId: "44183198760",
+  appId: "1:44183198760:web:f7fadcc56955950406691d",
+  measurementId: "G-70FZ2BF8M8"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+function mostrarDeseosArbol() {
+  const hojas = document.getElementById('hojas-arbol');
+  db.ref('deseos').on('value', snapshot => {
+    hojas.innerHTML = '';
+    const data = snapshot.val();
+    if (!data) return;
+    const deseos = Object.entries(data);
+    const radio = 100;
+    const centroX = 120, centroY = 120;
+    deseos.forEach(([key, texto], i) => {
+      const angulo = (2 * Math.PI * i) / deseos.length - Math.PI/2;
+      const x = centroX + radio * Math.cos(angulo);
+      const y = centroY + radio * Math.sin(angulo);
+      const hoja = document.createElement('span');
+      hoja.style.position = 'absolute';
+      hoja.style.left = x + 'px';
+      hoja.style.top = y + 'px';
+      hoja.style.fontSize = '1em';
+      hoja.style.background = '#e0ffe0';
+      hoja.style.borderRadius = '12px';
+      hoja.style.padding = '2px 8px';
+      hoja.style.whiteSpace = 'nowrap';
+      hoja.style.boxShadow = '0 2px 8px #b2dfdb';
+      hoja.innerHTML = `🍃 ${texto} <button onclick="eliminarDeseoArbol('${key}')" style="background:none; border:none; color:#e75480; font-size:1em; cursor:pointer;">❌</button>`;
+      hojas.appendChild(hoja);
+    });
+  });
+}
+
+function agregarDeseoArbol() {
+  const input = document.getElementById('deseo-input');
+  const texto = input.value.trim();
+  if(texto) {
+    db.ref('deseos').push(texto);
+    input.value = '';
+  }
+}
+
+function eliminarDeseoArbol(key) {
+  db.ref('deseos/' + key).remove();
+}
+
+mostrarDeseosArbol();
+</script>
+
 
 <script>
 function mostrarPoema() {
