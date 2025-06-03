@@ -4,6 +4,33 @@
   <meta charset="UTF-8" />
   <title>Feliz Cumpleaños, Mi Amor</title>
 
+<div id="anios-container" style="width:100%; text-align:center; margin-top:30px; position:relative; height:120px; display:none;">
+  <span id="num1" style="font-size:4em; font-weight:bold; color:#e75480; position:absolute; left:40%; top:0; transition:all 2s;">1</span>
+  <span id="num9" style="font-size:4em; font-weight:bold; color:#e75480; position:absolute; left:50%; top:0; transition:all 2s;">9</span>
+  <span id="num2" style="font-size:4em; font-weight:bold; color:#388e3c; position:absolute; left:45%; top:0; opacity:0; transition:all 1s;">2</span>
+  <span id="num0" style="font-size:4em; font-weight:bold; color:#388e3c; position:absolute; left:55%; top:0; opacity:0; transition:all 1s;">0</span>
+</div>
+<div id="mensaje-feliz" style="display:none; margin-top:30px; text-align:center;">
+  <span id="texto-feliz" style="
+    font-size:2.2em;
+    font-weight:bold;
+    color: #111;
+    font-family: monospace;
+    border-right: 2px solid #111;
+    padding: 0 12px;
+    display: inline-block;
+    white-space: pre;
+  "></span>
+</div>
+
+
+<style>
+@keyframes brillo {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 200% 50%;}
+}
+</style>
+  
 <div style="text-align:center; font-size:1.2em; color:#e75480; letter-spacing:2px; margin-top:20px;">
   PA MI AMOSHITA<br>
    TRAVIESILAAAA
@@ -30,6 +57,7 @@
   <div id="saludo" style="font-size:1.2em; color:#ff69b4; margin-top:10px;"></div>
 </div>
 <script>
+
 function actualizarReloj() {
   const ahora = new Date();
   let h = ahora.getHours();
@@ -463,16 +491,59 @@ body::before {
 </div>
 
 <script>
+function animar20Anios() {
+  document.getElementById('anios-container').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('num1').style.transform = 'translateX(-120px) scale(0.5)';
+    document.getElementById('num1').style.opacity = '0';
+    document.getElementById('num9').style.transform = 'translateX(120px) scale(0.5)';
+    document.getElementById('num9').style.opacity = '0';
+  }, 1200);
+
+  setTimeout(() => {
+    const num2 = document.getElementById('num2');
+    const num0 = document.getElementById('num0');
+    num2.style.opacity = '1';
+    num0.style.opacity = '1';
+    num2.style.transform = 'translateX(25px) scale(1.2)';
+    num0.style.transform = 'translateX(-25px) scale(1.2)';
+    setTimeout(() => {
+      num2.style.transform = 'translateX(0) scale(1)';
+      num0.style.transform = 'translateX(0) scale(1)';
+      // Animación de escribir el mensaje
+      const mensaje = "Felices 20 mi amoshitaaaa nangonaaaa";
+      const contenedor = document.getElementById('mensaje-feliz');
+      const texto = document.getElementById('texto-feliz');
+      contenedor.style.display = 'block';
+      texto.textContent = "";
+      let i = 0;
+      function escribir() {
+        if (i <= mensaje.length) {
+          texto.textContent = mensaje.slice(0, i);
+          i++;
+          setTimeout(escribir, 80);
+        } else {
+          texto.style.borderRight = "none";
+        }
+      }
+      escribir();
+    }, 900);
+  }, 3200);
+}
+
 function verificarContraseña() {
   const claveCorrecta = "nangona";
   const claveIngresada = document.getElementById('clave').value;
   if (claveIngresada === claveCorrecta) {
     document.getElementById('bloqueo').style.display = 'none';
+    animar20Anios(); // <--- Esto muestra la animación
   } else {
     document.getElementById('mensaje-error').textContent = "Contraseña incorrecta 😢";
   }
 }
 </script>
+
+
 
 <script>
 // Desactiva clic derecho
@@ -790,7 +861,49 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   </div>
 </div>
 
-<!-- Scripts de Firebase -->
+<!-- Botón flotante de historial -->
+<button id="btn-historial" title="Ver historial" style="
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #e75480;
+  color: #fff;
+  border: none;
+  font-size: 2em;
+  box-shadow: 0 2px 8px #888;
+  cursor: pointer;
+  z-index: 1000;
+">⏰</button>
+
+<!-- Modal oculto para el historial -->
+<div id="modal-historial" style="
+  display:none;
+  position:fixed;
+  left:0; top:0; width:100vw; height:100vh;
+  background:rgba(0,0,0,0.4);
+  z-index:2000;
+  align-items:center; justify-content:center;
+">
+  <div style="
+    background:#fff;
+    border-radius:12px;
+    padding:24px 18px;
+    max-width:350px;
+    margin:60px auto;
+    box-shadow:0 4px 24px #0003;
+    text-align:left;
+    position:relative;
+  ">
+    <button onclick="cerrarHistorial()" style="position:absolute; right:12px; top:12px; background:none; border:none; font-size:1.3em; color:#e75480; cursor:pointer;">✖</button>
+    <h3 style="color:#e75480; margin-top:0; margin-bottom:10px; font-size:1.2em;">Historial de sesiones</h3>
+    <ul id="lista-sesiones" style="color:#388e3c; font-size:1em; list-style: none; padding:0; max-height:250px; overflow:auto;"></ul>
+  </div>
+</div>
+
+<!-- Scripts de Firebase (solo una vez) -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 <script>
@@ -808,6 +921,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+// ---- ÁRBOL DE DESEOS ----
 function mostrarDeseosArbol() {
   const hojas = document.getElementById('hojas-arbol');
   db.ref('deseos').on('value', snapshot => {
@@ -836,7 +950,6 @@ function mostrarDeseosArbol() {
     });
   });
 }
-
 function agregarDeseoArbol() {
   const input = document.getElementById('deseo-input');
   const texto = input.value.trim();
@@ -845,14 +958,96 @@ function agregarDeseoArbol() {
     input.value = '';
   }
 }
-
 function eliminarDeseoArbol(key) {
   db.ref('deseos/' + key).remove();
 }
-
 mostrarDeseosArbol();
-</script>
 
+// ---- ENLACES GLOBALES ----
+function mostrarEnlaces() {
+  const lista = document.getElementById('lista-enlaces');
+  db.ref('enlaces').on('value', snapshot => {
+    lista.innerHTML = '';
+    const data = snapshot.val();
+    if (!data) return;
+    const enlaces = Object.entries(data);
+    enlaces.forEach(([key, url]) => {
+      if (!url) return;
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${url}" target="_blank" style="color:#e75480; text-decoration:underline;">${url}</a>
+        <button onclick="eliminarEnlace('${key}')" style="background:none; border:none; color:#e75480; font-size:1em; cursor:pointer;">❌</button>`;
+      lista.appendChild(li);
+    });
+  });
+}
+function agregarEnlace() {
+  const input = document.getElementById('nuevo-enlace');
+  const url = input.value.trim();
+  if(url) {
+    db.ref('enlaces').push(url);
+    input.value = '';
+  }
+}
+function eliminarEnlace(key) {
+  db.ref('enlaces/' + key).remove();
+}
+document.addEventListener('DOMContentLoaded', mostrarEnlaces);
+
+// ---- HISTORIAL DE SESIONES ----
+function registrarSesion() {
+  const fecha = new Date();
+  const hora = fecha.toLocaleString();
+  const dispositivo = navigator.userAgent;
+  db.ref('sesiones').push({
+    hora: hora,
+    dispositivo: dispositivo
+  });
+}
+
+function mostrarSesiones() {
+  const lista = document.getElementById('lista-sesiones');
+  db.ref('sesiones').on('value', snapshot => {
+    lista.innerHTML = '';
+    const data = snapshot.val();
+    if (!data) return;
+    // data es un objeto: {key: {hora, dispositivo}, ...}
+    const sesiones = Object.entries(data).reverse();
+    sesiones.forEach(([key, s]) => {
+      const li = document.createElement('li');
+      li.innerHTML = `🕒 ${s.hora} | 📱 ${s.dispositivo} 
+        <button onclick="eliminarSesion('${key}')" style="background:none; border:none; color:#e75480; font-size:1em; cursor:pointer;">❌</button>`;
+      lista.appendChild(li);
+    });
+  });
+}
+
+
+function eliminarSesion(key) {
+  db.ref('sesiones/' + key).remove();
+}
+
+function abrirHistorial() {
+  const pass = prompt("Introduce la contraseña para ver el historial:");
+  if (pass === "ososo") {
+    document.getElementById('modal-historial').style.display = 'flex';
+    mostrarSesiones();
+  } else if (pass !== null) {
+    alert("Contraseña incorrecta.");
+  }
+}
+
+function cerrarHistorial() {
+  document.getElementById('modal-historial').style.display = 'none';
+}
+
+// Registrar sesión al entrar
+registrarSesion();
+
+// Evento para el botón flotante (asegura que el DOM esté listo)
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('btn-historial').onclick = abrirHistorial;
+});
+</script>
 
 <script>
 function mostrarPoema() {
@@ -872,45 +1067,11 @@ function mostrarPoema() {
   <audio id="musica" src="unforgttable.mp3" preload="auto" loop></audio>
 
 <div style="text-align:center; margin:30px 0;">
-  <h3 style="color:#e75480;">🔗 Enlaces q quieras agg jeje...</h3>
+  <h3 style="color:#e75480;">🔗 Enlaces favoritos (global)</h3>
   <input id="nuevo-enlace" type="text" placeholder="Pega aquí el enlace..." style="padding:6px 14px; border-radius:8px; width:220px;">
   <button onclick="agregarEnlace()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
   <ul id="lista-enlaces" style="margin-top:15px; color:#388e3c; font-size:1.1em; list-style: none; padding:0;"></ul>
 </div>
-<script>
-function mostrarEnlaces() {
-  const lista = document.getElementById('lista-enlaces');
-  lista.innerHTML = '';
-  const enlaces = JSON.parse(localStorage.getItem('misEnlaces') || '[]');
-  enlaces.forEach((url, i) => {
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="${url}" target="_blank" style="color:#e75480; text-decoration:underline;">${url}</a>
-      <button onclick="eliminarEnlace(${i})" style="background:none; border:none; color:#e75480; font-size:1em; cursor:pointer;">❌</button>`;
-    lista.appendChild(li);
-  });
-}
-
-function agregarEnlace() {
-  const input = document.getElementById('nuevo-enlace');
-  const url = input.value.trim();
-  if(url) {
-    const enlaces = JSON.parse(localStorage.getItem('misEnlaces') || '[]');
-    enlaces.push(url);
-    localStorage.setItem('misEnlaces', JSON.stringify(enlaces));
-    input.value = '';
-    mostrarEnlaces();
-  }
-}
-
-function eliminarEnlace(indice) {
-  const enlaces = JSON.parse(localStorage.getItem('misEnlaces') || '[]');
-  enlaces.splice(indice, 1);
-  localStorage.setItem('misEnlaces', JSON.stringify(enlaces));
-  mostrarEnlaces();
-}
-
-mostrarEnlaces();
-</script>
 
   <script>
     document.addEventListener('click', function reproducirMusica() {
