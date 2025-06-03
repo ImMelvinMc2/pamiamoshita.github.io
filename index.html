@@ -4,6 +4,75 @@
   <meta charset="UTF-8" />
   <title>Feliz Cumpleaños, Mi Amor</title>
 
+  <div id="mensaje-feliz" style="display:none; margin-top:30px; text-align:center;">
+  <span id="texto-feliz" class="brillante"></span>
+</div>
+
+
+
+
+<style>
+.boton-bonito {
+  display: inline-block;
+  font-size: 1.1em;
+  font-family: inherit;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 24px;
+  margin: 8px 6px 8px 0;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  outline: none;
+}
+.boton-azul    { background: linear-gradient(90deg, #2196f3 60%, #1976d2 100%); }
+.boton-rojo    { background: linear-gradient(90deg, #e53935 60%, #b71c1c 100%); }
+.boton-verde   { background: linear-gradient(90deg, #43a047 60%, #1b5e20 100%); }
+.boton-naranja { background: linear-gradient(90deg, #ff9800 60%, #f57c00 100%); }
+.boton-morado  { background: linear-gradient(90deg, #8e24aa 60%, #4a148c 100%); }
+.boton-rosa    { background: linear-gradient(90deg, #e75480 60%, #ad1457 100%); }
+.boton-gris    { background: linear-gradient(90deg, #757575 60%, #212121 100%); }
+
+.boton-bonito:hover, .boton-bonito:focus {
+  filter: brightness(1.15);
+  transform: scale(1.07);
+  box-shadow: 0 4px 16px #0003;
+}
+.boton-bonito:active {
+  transform: scale(0.97);
+}
+
+.brillante {
+  font-size: 2.2em;
+  font-weight: bold;
+  font-family: monospace;
+  border-right: 2px solid #111;
+  padding: 0 12px;
+  display: inline-block;
+  white-space: pre;
+  /* Efecto de gradiente animado */
+  background: linear-gradient(90deg, #e75480, #388e3c, #ffeb3b, #2196f3, #e75480);
+  background-size: 400% 100%;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brilloColor 3s linear infinite;
+  text-shadow: 0 0 12px #fff, 0 0 18px #e75480;
+}
+@keyframes brilloColor {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+</style>
+
+
+
+
 <div id="anios-container" style="width:100%; text-align:center; margin-top:30px; position:relative; height:120px; display:none;">
   <span id="num1" style="font-size:4em; font-weight:bold; color:#e75480; position:absolute; left:40%; top:0; transition:all 2s;">1</span>
   <span id="num9" style="font-size:4em; font-weight:bold; color:#e75480; position:absolute; left:50%; top:0; transition:all 2s;">9</span>
@@ -127,11 +196,11 @@ actualizarReloj();
   <div style="color:#e75480; margin-top:10px;">¡Sopla la velita y pide un deseo! 🎂</div>
 </div>
 
-<button onclick="mostrarCarta()" style="font-size:1em; padding:6px 14px; border-radius:8px; margin:20px auto; display:block;">💌 Leer mi carta para ti</button>
+  <button class="boton-bonito boton-naranja" onclick="mostrarCarta()">💌 Leer mi carta para ti</button>
 <div id="carta-cumple" style="display:none; max-width:400px; margin:20px auto; background:#fff0f6; border-radius:14px; padding:18px; color:#e75480; font-size:1.1em; box-shadow:0 2px 12px #ffb6c1; min-height:120px;"></div>
 <script>
 const textoCarta = `Oaaaaaa mi amoshitaaaa!!!. 💖✨
-Hoy es un día muy especial porque celebramos tu cumpleañoos my love. Gracias por cada sonrisa, cada cosa q haces y cada momento juntos. Eres mi alegría y mi vidaaaaa. Espero q este día te loo pases de lo mejor mi amoshitaaa, disfrutalooo al maxiamoooo mi niña y no olvidees lo mushooo mushoteeeee q ti amooooo mi traviesillaaa💖. ¡Feliz cumpleaños, mi niña pechochaaaa!.`;
+Hoy es un día muy especial porque celebramos tu cumpleañoos my love. Gracias por cada sonrisa, cada cosa q haces y cada momento juntos. Eres mi alegría y mi vidaaaaa. Espero q este día te loo pases de lo mejor mi amoshitaaa, disfrutalooo al maximoooo mi niña y no olvidees lo mushooo mushoteeeee q ti amooooo mi traviesillaaa💖. ¡Feliz cumpleaños, mi niña pechochaaaa!.`;
 
 function mostrarCarta() {
   const carta = document.getElementById('carta-cumple');
@@ -217,7 +286,7 @@ setInterval(crearPetalo, 400);
 </script>
 
   <div class="peluche-con-frase">
-  <span class="frase">¡Hola amor, soy Dudu! 🧸💕</span>
+  <span class="frase">¡Hola mi amor espero y te guste jeje! 🧸💕</span>
   <img src="Dudu.webp" class="peluche" />
 </div>
 
@@ -456,6 +525,7 @@ body::before {
 }
 </style>
 
+
 </script>
 </head>
 <body class="tema-1">
@@ -486,7 +556,7 @@ body::before {
 <div id="bloqueo" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#523737; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column;">
   <h2>🔒 Ingresa la contraseña</h2>
   <input type="password" id="clave" placeholder="Contraseña" style="font-size:1.2em; padding:6px 12px; border-radius:8px; border:1px solid #ccc;">
-  <button onclick="verificarContraseña()" style="margin-top:10px; font-size:1em; padding:4px 12px; border-radius:8px;">Entrar</button>
+   <button class="boton-bonito boton-azul" onclick="verificarContraseña()">Entrar</button>
   <div id="mensaje-error" style="color:red; margin-top:8px;"></div>
 </div>
 
@@ -519,7 +589,7 @@ function animar20Anios() {
       let i = 0;
       function escribir() {
         if (i <= mensaje.length) {
-          texto.textContent = mensaje.slice(0, i);
+          texto.innerHTML = "<b>" + mensaje.slice(0, i) + "</b>";
           i++;
           setTimeout(escribir, 80);
         } else {
@@ -776,7 +846,7 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   <h2>🔐 Solo tú puedes leer esto... una pita... comienza con "t" y termina con "a" y alguien se baña muy tarde tambien....</h2>
   <input type="text" id="claveInput" placeholder="Escribe la clave aquí">
   <br>
-  <button onclick="verificarClave()">Desbloquear</button>
+  <button class="boton-bonito boton-rosa" onclick="verificarClave()">Desbloquear</button>
   <div id="secreto">
     ✨ Mi amor, shi tas leyendo eto eh poque sabes q eres una tochinita jeje y lo especial que eres para mí, mi bebitaaa pechochaaaa nu se baña Yyyyyyyy nangonaaaa sha tiene 20 añitoooosh mi mamiiiii Yyyyyyyyy... 💖
   </div>
@@ -801,10 +871,6 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   
 
   
-   <div class="volume-control">
-    <label for="volumen">🔊 Volumen:</label>
-    <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
-  </div>
 
   <div class="hearts" id="hearts-container"></div>
 
@@ -842,7 +908,7 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   <h1>🎉 ¡Feliz Cumpleaños, Mi Amor! 🎂</h1>
   <p id="mensaje"></p>
 
-<button class="btn" onclick="mostrarPoema()">Ti amooooo mi amoshitaaaa 💌  </button>
+  <button class="boton-bonito boton-morado" onclick="mostrarPoema()">Ti amooooo mi amoshitaaaa 💌</button>
 <div id="poema" style="margin-top: 20px;"></div>
 
 <div style="text-align:center; margin:30px 0;">
@@ -857,26 +923,10 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
   </div>
   <div style="margin-top:20px;">
     <input id="deseo-input" type="text" placeholder="Escribe tu deseo..." style="padding:6px 14px; border-radius:8px;">
-    <button onclick="agregarDeseoArbol()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
+    <button class="boton-bonito boton-azul" onclick="agregarDeseoArbol()">Agregar deseo</button>
   </div>
 </div>
 
-<!-- Botón flotante de historial -->
-<button id="btn-historial" title="Ver historial" style="
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: #e75480;
-  color: #fff;
-  border: none;
-  font-size: 2em;
-  box-shadow: 0 2px 8px #888;
-  cursor: pointer;
-  z-index: 1000;
-">⏰</button>
 
 <!-- Modal oculto para el historial -->
 <div id="modal-historial" style="
@@ -897,7 +947,7 @@ window.addEventListener('DOMContentLoaded', lanzarFuegos);
     text-align:left;
     position:relative;
   ">
-    <button onclick="cerrarHistorial()" style="position:absolute; right:12px; top:12px; background:none; border:none; font-size:1.3em; color:#e75480; cursor:pointer;">✖</button>
+     <button class="boton-bonito boton-verde" onclick="cerrarHistorial()" style="position:absolute; right:12px; top:12px; background:none; border:none; font-size:1.3em; color:#e75480; cursor:pointer;">✖</button>
     <h3 style="color:#e75480; margin-top:0; margin-bottom:10px; font-size:1.2em;">Historial de sesiones</h3>
     <ul id="lista-sesiones" style="color:#388e3c; font-size:1em; list-style: none; padding:0; max-height:250px; overflow:auto;"></ul>
   </div>
@@ -1057,10 +1107,6 @@ function mostrarPoema() {
   poema.style.display = "block";
 }
 </script>
-  <div class="volume-control">
-    <label for="volumen">🔊 Volumen:</label>
-    <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
-  </div>
 
   <div class="hearts" id="hearts-container"></div>
 
@@ -1069,7 +1115,7 @@ function mostrarPoema() {
 <div style="text-align:center; margin:30px 0;">
   <h3 style="color:#e75480;">🔗 Enlaces favoritos (global)</h3>
   <input id="nuevo-enlace" type="text" placeholder="Pega aquí el enlace..." style="padding:6px 14px; border-radius:8px; width:220px;">
-  <button onclick="agregarEnlace()" style="padding:6px 14px; border-radius:8px;">Agregar</button>
+  <button class="boton-bonito boton-rojo" onclick="agregarEnlace()">Agregar enlace</button>
   <ul id="lista-enlaces" style="margin-top:15px; color:#388e3c; font-size:1.1em; list-style: none; padding:0;"></ul>
 </div>
 
