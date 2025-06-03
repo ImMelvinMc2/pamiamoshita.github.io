@@ -95,3 +95,20 @@ mostrarChat();
 cambiarTema('tema-estrellas'); // Azul
 cambiarTema('tema-oscuro'); // Oscuro
 cambiarTema('tema-romantico'); // Rosa claro
+
+const mensaje = "Felices 20 mi amoshitaaaa nangonaaaa";
+const contenedor = document.getElementById('mensaje-feliz');
+const texto = document.getElementById('texto-feliz');
+contenedor.style.display = 'block';
+texto.innerHTML = "";
+let i = 0;
+function escribir() {
+  if (i <= mensaje.length) {
+    texto.innerHTML = "<b>" + mensaje.slice(0, i) + "</b>";
+    i++;
+    setTimeout(escribir, 80);
+  } else {
+    texto.style.borderRight = "none";
+  }
+}
+escribir();
